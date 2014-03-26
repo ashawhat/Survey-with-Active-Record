@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  database: pos_surveys
+
+test:
+  adapter: postgresql
+  database: pos_surveys_test
