@@ -4,6 +4,7 @@ require 'shoulda-matchers'
 require 'survey'
 require 'question'
 require 'answer'
+require 'response'
 
 database_configurations = YAML::load(File.open('./db/config.yml'))
 development_configuration = database_configurations['test']
