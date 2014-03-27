@@ -21,7 +21,7 @@ puts "Press 'X' to exit"
 input = gets.chomp.downcase
 case input
   when 'd' then designer_menu
-  when 't' then user_menu
+  when 't' then survey_taker_menu
   when 'x' then puts "Goodbye!"
   else
     puts 'Not a Valid Key'
@@ -29,16 +29,26 @@ case input
   end
 end
 
-def user_menu
-  puts "Welcome Earthling."
-  puts "To View a List of Surveys to Take, press 'S'"
-  user_input = gets.chomp.downcase
-  case user_input
-  when 's' then view_surveys
-  else
-    main_menu
+# def user_menu
+#   puts "Welcome Earthling."
+#   puts "To View a List of Surveys to Take, press 'S'"
+#   user_input = gets.chomp.downcase
+#   case user_input
+#   when 's' then survey_taker_menu
+#   else
+#     main_menu
+# end
+# end
+
+def survey_taker_menu
+ puts "Here are the Possible Surveys, select by index to Open a Survey:"
+ survey_to_open = Survey.all.each_with_index { |name, index| puts "#{index+1}. #{name.name}"}
+ input = gets.chomp.to_i
+ current_survey = survey_to_open[input-1]
+
+
 end
-end
+
 
 def designer_menu
   puts "Press 'C' to create a new survey"
@@ -161,7 +171,7 @@ def answer_view(to_open)
   user_answer = gets.chomp
   to_open = selected_answer[input-1]
   response = Response.create(:name => selected_answer.answers, :answer_id => to_open)
-  puts response
+
 
 end
 

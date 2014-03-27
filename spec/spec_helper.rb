@@ -13,5 +13,8 @@ ActiveRecord::Base.establish_connection(development_configuration)
 RSpec.configure do |config|
   config.after(:each) do
     Survey.all.each { |task| task.destroy}
+    Question.all.each { |task| task.destroy}
+    Answer.all.each { |task| task.destroy}
+    Response.all.each { |task| task.destroy}
   end
 end
